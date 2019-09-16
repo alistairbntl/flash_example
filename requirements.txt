@@ -1,3 +1,4 @@
+bokeh==1.2.0
 Flask==0.10.1
 pandas==0.23.2
 gunicorn==19.9.0
