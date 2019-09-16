@@ -35,8 +35,6 @@ def initialize():
         show(p)
 
         return render_template("stockquote_output.html")
-#        return render_template("stockquote_request_str.html",request_str=request_str)
-
 
 def get_dates():
     now = datetime.datetime.now()
