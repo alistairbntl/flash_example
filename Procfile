@@ -1,1 +1,1 @@
-web: gunicorn stock
+web: gunicorn app:app_arb
