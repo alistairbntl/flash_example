@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-import numpy as np
 import datetime, requests, pandas
 from bokeh.plotting import figure, output_file, show
 
@@ -26,12 +25,13 @@ def initialize():
                                       columns=data.json()['dataset_data']['column_names'])
 
         data_frame['Date'] = pandas.to_datetime(data_frame['Date'],format="%Y-%m-%d")
-        close_price = np.array(data_frame['Close'])
         
         output_file("./templates/stockquote_output.html")
         
         p = figure(title=app_arb.vars['ticker_sym'], x_axis_label="datetime", y_axis_label="price")
-        p.line(data_frame['Date'],close_price,legend="test",line_width=2)
+        p.line(data_frame['Date'],
+               data_frame['Close'],
+               legend="test",line_width=2)
         show(p)
 
         return render_template("stockquote_output.html")
